@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  outline: none;
+}
+button {
+  padding: 8px 10px;
+  border: 1px solid black;
+  background: white;
+  width: max-content;
+  border-radius: 5px;
+  margin: auto;
+  &:hover {
+    background: #4ca5f5;
+    border: 1px solid #4ca5f5;
+    color: white;
+  }
+}
+select {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px 10px;
+}
+input {
+  border-radius: 5px;
+  padding: 2px;
+}

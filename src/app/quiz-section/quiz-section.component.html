@@ -1,0 +1,21 @@
+<div *ngIf="!quizStarted" class="container">
+  <span style="font-size: 20px"
+    >Select total question:
+    <select [(ngModel)]="totalQuizQuestion">
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+    </select>
+  </span>
+  <span style="font-size: 20px">Allowed Operators:</span>
+  <div *ngFor="let operator of operatorsArray">
+    <input type="checkbox" [(ngModel)]="operator.checked" />
+    <span> {{ operator.value }}</span>
+  </div>
+  <button (click)="quizStarted = true">Start Quiz</button>
+</div>
+<app-quiz-questions
+  *ngIf="quizStarted"
+  (initiateQuestion)="initiateQuestion($event)"
+  [question]="question"
+></app-quiz-questions>

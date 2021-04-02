@@ -1,0 +1,47 @@
+<div *ngIf="!completed" class="container">
+  <span style="font-size: 30px; font-weight: bold">Questions</span>
+  <span style="font-size: 25px; margin: 0px"
+    >{{ count + 1 }}. <b>{{ question.operator }}</b> {{ question.number1 }} with
+    {{ question.number2 }}</span
+  >
+  <span *ngIf="question.operator === 'Divide'"
+    >(Round off your answer to 2 decimal places)</span
+  >
+  <span style="font-size: 20px; font-weight: bold"
+    >Answer:
+    <input
+      #userInputBox
+      type="number"
+      (input)="getAnswer($event.target.valueAsNumber)"
+      (keydown.enter)="submitButton.click(); userInputBox.value = null"
+  /></span>
+  <button #submitButton (click)="submit(); userInputBox.value = null">
+    Submit
+  </button>
+  <div style="font-size: 20px">
+    Timer: <b>{{ timer }}</b> Sec
+  </div>
+  <div style="font-size: 20px">Score: {{ score }}/{{ count }}</div>
+</div>
+
+<div *ngIf="completed" class="container">
+  <div
+    *ngFor="let question of quizSerivce.questionsArray; let i = index"
+    style="margin: 0px"
+  >
+    <div
+      style="font-size: 25px"
+      [ngStyle]="question.userAnswer !== question.answer && { color: 'red' }"
+    >
+      {{ i + 1 }}.<b> {{ question.operator }}</b> {{ question.number1 }} with
+      {{ question.number2 }}
+    </div>
+    <div style="font-size: 20px">
+      Your answer:
+      <b>{{ question.userAnswer ? question.userAnswer : "Not Attempted" }}</b>
+      Correct Answer:
+      <b>{{ question.answer }}</b>
+    </div>
+  </div>
+  <button [routerLink]="['../home']">Back</button>
+</div>

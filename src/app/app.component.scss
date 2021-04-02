@@ -1,0 +1,9 @@
+.app-container {
+  display: grid;
+  justify-content: center;
+  row-gap: 20px;
+  .cs {
+    margin: auto;
+    font-size: 24px;
+  }
+}
